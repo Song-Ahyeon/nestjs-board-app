@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Board, BoardStatus } from './board.model';
 import { v1 as uuid } from 'uuid';  // uuid의 v1 버전을 uuid라는 이름으로 사용하겠다
+import { CreateBoardDto } from './dto/create-board.dto';
 
 @Injectable()
 export class BoardsService {
@@ -18,7 +19,8 @@ export class BoardsService {
     }
 
     // 게시물 생성 기능
-    createBoard(title: string, description: string) {
+    createBoard(createBoardDto: CreateBoardDto) {
+        const { title, description } = createBoardDto;
         const board: Board = {
             // uuid를 이용해서 unique value 부여
             id: uuid(),
