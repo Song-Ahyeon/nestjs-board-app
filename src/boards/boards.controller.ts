@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { Board, BoardStatus } from './board.model';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -16,6 +16,7 @@ export class BoardsController {
 
     // title, description을 인자로 넘겨줘서 service의 createBoard를 실행시키는건데... 어떻게?
     @Post()
+    @UsePipes(ValidationPipe)
     createBoard(
         @Body() createBoardDto: CreateBoardDto): Board {  //return type 지정
         return this.boardsService.createBoard(createBoardDto);
