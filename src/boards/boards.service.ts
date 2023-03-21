@@ -79,4 +79,11 @@ export class BoardsService {
     //         })
     //     }
     // }
+
+    updateBoardStatus(id: string, status: BoardStatus): Board {
+        // status를 업데이트 할 board
+        const board = this.getBoardById(id);
+        board.status = status;
+        return board;
+    }
 }
