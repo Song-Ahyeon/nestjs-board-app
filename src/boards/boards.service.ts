@@ -58,4 +58,25 @@ export class BoardsService {
     getBoardByTitle(title: string): Board {
         return this.boards.find((board) => board.title === title)
     }
+
+    deleteBoard(id: string): void {
+        this.boards = this.boards.filter((board) => board.id !== id);
+    }
+
+    // deleteBoard 실패 문구 추가
+    // deleteBoard(id: string){
+    //     const found = this.boards.find(e => e.id === id)
+    //     if (found) {
+    //         this.boards = this.boards.filter((board) => board.id !== id);
+    //         return ({
+    //             status: 'success',
+    //             description: `${id} is successfully deleted`
+    //         })
+    //     } else {
+    //         return ({
+    //             status: 'fail',
+    //             description: 'delete fail'
+    //         })
+    //     }
+    // }
 }
