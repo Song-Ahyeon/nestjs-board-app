@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Board, BoardStatus } from './board.model';
 import { v1 as uuid } from 'uuid';  // uuid의 v1 버전을 uuid라는 이름으로 사용하겠다
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -45,14 +45,11 @@ export class BoardsService {
 
     getBoardById(id: string): Board{
         const result = this.boards.find((board) => board.id === id)
-        if (result) { return result; } else { return {
-            id: '',
-            title: '404',
-            description: 'not found',
-            status: BoardStatus.PUBLIC
-        }}
-        
-        // return this.boards.find((board) => board.id === id)
+        if (result) {
+            return result; 
+        } else { 
+            throw new NotFoundException(`no id: ${id}`); 
+        }
     }
 
     getBoardByTitle(title: string): Board {
