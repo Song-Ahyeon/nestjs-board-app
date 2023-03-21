@@ -57,7 +57,8 @@ export class BoardsService {
     }
 
     deleteBoard(id: string): void {
-        this.boards = this.boards.filter((board) => board.id !== id);
+        const found = this.getBoardById(id);
+        this.boards = this.boards.filter((board) => board.id !== found.id);
     }
 
     // deleteBoard 실패 문구 추가
