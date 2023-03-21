@@ -1,6 +1,6 @@
 import { BadRequestException } from "@nestjs/common/exceptions";
 import { ArgumentMetadata, PipeTransform } from "@nestjs/common/interfaces";
-import { BoardStatus } from "../board.model";
+import { BoardStatus } from "../board-status.enum";
 
 export class BoardStatusValidationPipe implements PipeTransform {
     
