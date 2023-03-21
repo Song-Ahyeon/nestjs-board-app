@@ -11,8 +11,6 @@ export class BoardsController {
     // Get 요청이 왔을 경우 getAllBoard의 return값(this.boardsService.getAllBoards)을 응답함
     @Get('/')
     getAllBoard():Board[] {
-        console.log('get all boards');
-        
         return this.boardsService.getAllBoards();
     }
 
@@ -20,11 +18,17 @@ export class BoardsController {
     @Post()
     createBoard(
         @Body() createBoardDto: CreateBoardDto): Board {  //return type 지정
-        console.log('createboard');
-        
         return this.boardsService.createBoard(createBoardDto);
     }
+
+    // query가 parameter보다 아래에 있을 경우 인식하지 못함
+    // boards/search?title={title}
+    @Get('/search')
+    getBoardByTitle(@Query('title') title): Board {
+        return this.boardsService.getBoardByTitle(title)
+    }
     
+    // boards/{id}
     @Get('/:id')
     getBoardById(@Param('id') id: string): Board {
         return this.boardsService.getBoardById(id);

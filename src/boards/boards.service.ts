@@ -8,9 +8,14 @@ export class BoardsService {
     // 게시판 데이터 담는 변수
     // 다른 컴포넌트에서 boards라는 배열값을 수정할 수 있기 때문에 접근제한자 private 사용
     private boards: Board[] = [{
-        id: 'id',
-        title: 'title',
-        description: 'desc',
+        id: 'id1',
+        title: 'title1',
+        description: 'desc1',
+        status: BoardStatus.PUBLIC
+    }, {
+        id: 'id2',
+        title: 'title2',
+        description: 'desc2',
         status: BoardStatus.PUBLIC
     }];
     /**
@@ -39,7 +44,6 @@ export class BoardsService {
     }
 
     getBoardById(id: string): Board{
-        console.log(id);
         const result = this.boards.find((board) => board.id === id)
         if (result) { return result; } else { return {
             id: '',
@@ -49,5 +53,9 @@ export class BoardsService {
         }}
         
         // return this.boards.find((board) => board.id === id)
+    }
+
+    getBoardByTitle(title: string): Board {
+        return this.boards.find((board) => board.title === title)
     }
 }
