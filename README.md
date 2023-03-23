@@ -1,3 +1,14 @@
+## Info
+[NestJS](https://github.com/nestjs/nest)로 만든 게시판 어플리케이션
+## Used...
+- NestJS
+- Typescript
+- TypeORM
+- PostgreSQL
+- DBeaver
+
+<br/><br/><br/><br/>
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
